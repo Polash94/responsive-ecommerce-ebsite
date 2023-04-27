@@ -4,15 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ProductProvider } from './Components/ProductContext';
+import { SidebarProvider } from './Components/SidebarContext';
+import { CartProvider } from './Components/CartContext';
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ProductProvider>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </ProductProvider>
-  
+<BrowserRouter>
+  <SidebarProvider>
+    <CartProvider>
+    <ProductProvider>
+
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+
+    </ProductProvider>
+    </CartProvider>
+  </SidebarProvider>
+  </BrowserRouter>
+
+
 );
 
 // If you want to start measuring performance in your app, pass a function
